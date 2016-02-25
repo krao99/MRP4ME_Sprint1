@@ -1,0 +1,499 @@
+﻿<!-- 
+This resource dictionary is used by the MainWindow. 
+-->
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:vm="clr-namespace:MRP4ME.ViewModel"
+  xmlns:vw="clr-namespace:MRP4ME.View"
+  x:Class="mainWindowresource"
+  xmlns:local="clr-namespace:MRP4ME.UIElementsLib"
+    
+  >
+
+    <local:BoolToVisibleConveter x:Key="BoolToVisConverter"/>
+    <local:TabItemBackgroundColourConverter x:Key="TabItemBackgroundColourConverter"/>
+    
+    <!-- 
+  This template applies an Home view  to an instance 
+  of the HomeViewModel class shown in the main window.
+  -->
+    <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+        <vw:HomeView />
+    </DataTemplate>
+
+    <!-- 
+  This template applies an Sales Order view to an instance 
+  of the SalesOrderView class shown in the main window.
+  -->
+    <DataTemplate DataType="{x:Type vm:SalesOrderViewModel}">
+        <vw:SalesOrderView />
+    </DataTemplate>
+
+    <!-- 
+  This template applies an BOM view  to an instance 
+  of the HomeViewModel class shown in the main window.
+  -->
+    <DataTemplate DataType="{x:Type vm:BOMViewModel}">
+        <vw:BOMView />
+    </DataTemplate>
+
+    <!-- 
+  This style configures the main content areas in the main window.
+  -->
+  <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+    <Setter Property="HeaderTemplate">
+      <Setter.Value>
+        <DataTemplate>
+          <Border 
+            Background="#FF0F9D58" 
+            BorderBrush="#FFE2FEE2" 
+            BorderThickness="1" 
+            CornerRadius="5" 
+            Margin="4" 
+            Padding="4" 
+            SnapsToDevicePixels="True" Height="66" 
+            >
+            <TextBlock 
+              FontSize="36"
+              FontWeight="Bold"
+              Foreground="#FFE2A023" 
+              HorizontalAlignment="Center"  
+              Text="{TemplateBinding Content}" FontFamily="Trebuchet MS" 
+              />
+          </Border>
+        </DataTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <!-- 
+        This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space. 
+        -->
+        <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+          <DockPanel>
+            <ContentPresenter 
+              DockPanel.Dock="Top"
+              ContentSource="Header" 
+              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                
+              />
+            <ContentPresenter 
+              ContentSource="Content" 
+              ContentTemplate="{TemplateBinding ContentTemplate}" 
+              />
+          </DockPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+    <!-- 
+  This style configures logo in the main content area in the main window.
+  -->
+    <Style x:Key="MainHCCLogoStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border 
+            Background="Transparent" 
+            BorderBrush="#FFE2FEE2" 
+            BorderThickness="1" 
+            CornerRadius="5" 
+            Margin="1" 
+            Padding="1" 
+            SnapsToDevicePixels="True" Height="100" 
+            >
+                        <Image  Source="Images/MRP4MElogo.jpg" Stretch="Fill"/>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- 
+        This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space. 
+        -->
+
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <ContentPresenter 
+              DockPanel.Dock="Top"
+              ContentSource="Header" 
+              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                Grid.Row="0"
+              />
+                        <ContentPresenter 
+              ContentSource="Content" 
+              ContentTemplate="{TemplateBinding ContentTemplate}" 
+                            Grid.Row="1"
+              />
+                    </Grid>
+                </ControlTemplate>
+                
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+  This style ensures that the borders in the main window are consistent.
+  -->
+  <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="#FFE2FEE2" />
+        <Setter Property="BorderBrush" Value="#FF0F9D58" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="5" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+  </Style>
+
+  <!--
+  This template explains how to render the list of commands on the left
+  side in the main window (the 'Control Panel' area).
+  -->
+  <DataTemplate x:Key="CommandsTemplate">
+    <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+
+                    <Grid>
+                        <StackPanel >
+                            <StackPanel Name="panelHome" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Welcome" 
+                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type HeaderedContentControl}}, Path=DataContext}">
+                                    <Button x:Name="btnHome" Content="Welcome" HorizontalAlignment="Center" 
+                                        Height="24" VerticalAlignment="Top" Width="180"  Command="{Binding HomeCommand}"
+                                        Background="#FFE2A023" Margin="2,2,0,0" />
+                                </StackPanel>
+
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelPO" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                                    Content="Sales Order" Foreground="#FFE2A023" FontWeight="Bold" Height="24" 
+                                    >
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.896"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type HeaderedContentControl}}, Path=DataContext}">
+                                    <Button x:Name="btnSalesOrder" HorizontalContentAlignment="Center" HorizontalAlignment="Center" 
+                            Height="24" VerticalAlignment="Top" Width="180" Content="Sales Order"
+                                            Command="{Binding SalesOrderCommand}"
+                            Background="#FFE2A023" Margin="2,2,0,1"  />
+                                    <Button x:Name="btnCreateChildCompnent" HorizontalContentAlignment="Center" 
+                            HorizontalAlignment="Center" Content="Child Component"
+                            Height="24" VerticalAlignment="Top" Width="180" 
+                            Background="#FFE2A023" Margin="2,2,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="90" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelBOM" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Bill Of Materials" 
+                       Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type HeaderedContentControl}}, Path=DataContext}">
+                                    <Button x:Name="btnBOM" Content="Bill of Materials" HorizontalAlignment="Center" 
+                        Height="24" VerticalAlignment="Top" Width="180" Command="{Binding BOMCommand}"
+                         Background="#FFE2A023" Margin="2,2,0,0"/>
+                                </StackPanel>
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelProdSchedule" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Production Schedule" 
+                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel>
+                                    <Button x:Name="btnProdSchedule" Content="Production Schedule" HorizontalAlignment="Center" 
+                        Height="24" VerticalAlignment="Top" Width="180" 
+                         Background="#FFE2A023" Margin="2,3,0,0"/>
+                                </StackPanel>
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelSpecifications" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Specifications" 
+                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel>
+                                    <Button x:Name="btnSpecifications" Content="Specifications" HorizontalAlignment="Center" 
+                        Height="24" VerticalAlignment="Top" Width="180" 
+                         Background="#FFE2A023" Margin="2,2,0,0"/>
+                                </StackPanel>
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelInventory" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Inventory Availability" 
+                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel>
+                                    <Button x:Name="btnInventory" Content="Inventory Avaliability" HorizontalAlignment="Center" 
+                        Height="24" VerticalAlignment="Top" Width="180" 
+                         Background="#FFE2A023" Margin="2,2,0,0"/>
+                                </StackPanel>
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                            <StackPanel Name="panelReports" Height="26">
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Reports" 
+                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
+                                    <Label.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF0F9D58" Offset="0.01"/>
+                                            <GradientStop Color="#FF0F9D58" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Label.Background>
+                                </Label>
+                                <StackPanel>
+                                    <Button x:Name="btnReports" Content="Reports" HorizontalAlignment="Center" 
+                        Height="24" VerticalAlignment="Top" Width="180" 
+                         Background="#FFE2A023" Margin="2,2,0,0"/>
+                                </StackPanel>
+                                <StackPanel.Triggers>
+                                    <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="panelHome" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelPO" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelBOM" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelProdSchedule" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelSpecifications" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelInventory" Storyboard.TargetProperty="Height" To="26" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                                <DoubleAnimation Storyboard.TargetName="panelReports" Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.50" AccelerationRatio="0.6" DecelerationRatio="0.4" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </StackPanel.Triggers>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+          
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </DataTemplate>
+
+  <!-- 
+  This template explains how to render 
+  a tab item with a close button.
+  -->
+    
+  <DataTemplate x:Key="ClosableTabItemTemplate">
+            <DockPanel Width="120">
+                <Button x:Name="BtnTabClose" 
+        Command="{Binding Path=CloseCommand}"
+        Content="X"
+        Cursor="Hand"
+        DockPanel.Dock="Right"
+        Focusable="False"
+        FontFamily="Courier" 
+        FontSize="9"
+        FontWeight="Bold"  
+        Margin="0,1,0,0"
+        Padding="0"
+        VerticalContentAlignment="Bottom"
+        Width="16" Height="16" Background="#FFE2A023" 
+        Visibility="{Binding Converter={StaticResource BoolToVisConverter}}"                
+        />
+            
+                <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center" 
+        />
+            
+        </DockPanel>
+
+    </DataTemplate>
+
+  <!--
+  This template explains how to render the 'Workspace' content area in the main window.
+  -->
+  <DataTemplate x:Key="WorkspacesTemplate">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TabControl 
+      IsSynchronizedWithCurrentItem="True" 
+      ItemsSource="{Binding}" 
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
+      Margin="4" Background="#FFE2FEE2" BorderThickness="0"
+
+      />
+        </ScrollViewer>
+    </DataTemplate>
+
+    <Style TargetType="{x:Type TabItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid>
+                        <Border 
+            Name="Border"
+            Margin="0,0,-4,0" 
+            Background="{Binding Converter={StaticResource TabItemBackgroundColourConverter}}"
+            
+            BorderThickness="1,1,1,1" 
+            CornerRadius="2,12,0,0" >
+                            <ContentPresenter x:Name="ContentSite"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              ContentSource="Header"
+              Margin="12,2,12,2"
+              RecognizesAccessKey="True"/>
+                        </Border>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="TextErrorStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate x:Name="TextErrorTemplate">
+                    <DockPanel LastChildFill="True">
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" 
+                                BorderThickness="2"/>
+                        </AdornedElementPlaceholder>
+                        <TextBlock FontSize="20" 
+                            Foreground="Red">*?*</TextBlock>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" 
+                Value="True">
+                <Setter Property="ToolTip" 
+                    Value="{Binding RelativeSource=
+            {x:Static RelativeSource.Self},
+            Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

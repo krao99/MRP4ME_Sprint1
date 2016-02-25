@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRP4ME", "MRP4ME\MRP4ME.csproj", "{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MRP4MESetup", "MRP4MESetup\MRP4MESetup.vdproj", "{07207F85-A9BB-429B-893C-54FAD4E699D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationToolkit", "ValidationToolkit\ValidationToolkit.csproj", "{1C4B7CAF-D535-4934-8B13-029918580C8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{26CFD5D4-94BD-40F3-BABA-E5FC7B6DB623}.Release|x86.ActiveCfg = Release|Any CPU
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Debug|Any CPU.ActiveCfg = Debug
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Debug|x86.ActiveCfg = Debug
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Release|Any CPU.ActiveCfg = Release
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Release|Mixed Platforms.ActiveCfg = Release
+		{07207F85-A9BB-429B-893C-54FAD4E699D6}.Release|x86.ActiveCfg = Release
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1C4B7CAF-D535-4934-8B13-029918580C8C}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = MvvmDemoApp.vsmdi
+	EndGlobalSection
+EndGlobal
