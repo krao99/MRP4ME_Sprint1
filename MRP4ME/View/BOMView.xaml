@@ -87,7 +87,7 @@
     </UserControl.Resources>
     <StackPanel Background="Transparent">
         <StackPanel Background="Transparent" Orientation="Horizontal">
-            <Label Content="Bill of Materials" HorizontalAlignment="Left" Height="30" Width="352" FontWeight="Bold"/>
+            <Label Content="Material Requirements" HorizontalAlignment="Left" Height="30" Width="352" FontWeight="Bold"/>
 
         </StackPanel>
 
@@ -130,7 +130,7 @@
                     </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="  Order #  " Binding="{Binding so_number}" />
-                        <DataGridTextColumn Header="  Customer/Vendor" Binding="{Binding customer_name}" >
+                        <DataGridTextColumn Header="  Customer/Vendor" Binding="{Binding customer_name}" Width="170" >
                             <DataGridTextColumn.ElementStyle>
                                 <Style>
                                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -142,7 +142,7 @@
                         <DataGridTextColumn Header="  Delivery date " Binding="{Binding required_date, StringFormat={}{0:MM/dd/yyyy}}" />
                         <DataGridTextColumn Header="  Item No  " Binding="{Binding item_code}" />
 
-                        <DataGridTextColumn Header="  Name  " Binding="{Binding name}" >
+                        <DataGridTextColumn Header="  Name  " Binding="{Binding name}" Width="280">
                             <DataGridTextColumn.ElementStyle>
                                 <Style>
                                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -153,8 +153,8 @@
                         <DataGridTextColumn Header="  UM  " Binding="{Binding unit}" />
                         <DataGridTextColumn Header="  Rate  " Binding="{Binding unit_cost, StringFormat={}{0:#0.00######}}" />
                         <DataGridTextColumn Header="  Quantity  " Binding="{Binding quantity}" />
-                        <DataGridTextColumn Header="  Quantity Shipped  " Binding="{Binding QuantityReceived}" />
-                        <DataGridTextColumn Header="  Backordered  " Binding="{Binding BackOrdered}" />
+                        <DataGridTextColumn Header="  Shipped/Received  " Binding="{Binding quantity_received}" />
+                        <DataGridTextColumn Header="  Backordered  " Binding="{Binding back_ordered}" />
                         <DataGridTextColumn Header="  Level  " Binding="{Binding level}" MinWidth="50" />
                         <DataGridTextColumn Header="  User  " Binding="{Binding user}" />
                         <DataGridTemplateColumn>
