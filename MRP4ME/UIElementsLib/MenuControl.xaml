@@ -78,7 +78,7 @@
                 </StackPanel.Triggers>
             </StackPanel>
             <StackPanel Name="panelBOM" Height="26">
-                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="BILL OF MATERIALS" 
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="MATERIAL REQUIREMENTS" 
                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
                     <Label.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -88,7 +88,7 @@
                     </Label.Background>
                 </Label>
                 <StackPanel>
-                    <Button x:Name="btnBOM" Content="Bill of Materials" HorizontalAlignment="Left" 
+                    <Button x:Name="btnBOM" Content="Material Requirements" HorizontalAlignment="Left" 
                         Height="24" VerticalAlignment="Top" Width="163" 
                          Background="#FFE2A023" Margin="2,2,0,0"/>
                 </StackPanel>

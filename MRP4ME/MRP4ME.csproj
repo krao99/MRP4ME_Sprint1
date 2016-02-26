@@ -179,6 +179,7 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BOMReport.rdlc" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
