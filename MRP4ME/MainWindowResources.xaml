@@ -235,7 +235,7 @@ This resource dictionary is used by the MainWindow.
                                 </StackPanel.Triggers>
                             </StackPanel>
                             <StackPanel Name="panelBOM" Height="26">
-                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Material Requirements" 
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Bill Of Materials" 
                        Foreground="#FFE2A023" FontWeight="Bold" Height="24">
                                     <Label.Background>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -245,7 +245,7 @@ This resource dictionary is used by the MainWindow.
                                     </Label.Background>
                                 </Label>
                                 <StackPanel DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type HeaderedContentControl}}, Path=DataContext}">
-                                    <Button x:Name="btnBOM" Content="Material Requirements" HorizontalAlignment="Center" 
+                                    <Button x:Name="btnBOM" Content="Bill of Materials" HorizontalAlignment="Center" 
                         Height="24" VerticalAlignment="Top" Width="180" Command="{Binding BOMCommand}"
                          Background="#FFE2A023" Margin="2,2,0,0"/>
                                 </StackPanel>
